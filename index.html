@@ -54,30 +54,150 @@
 				<section>
 					<h2>Hi, I'm</h2>
 					<h1>Tony Camaiani</h1>
-					<p>
+					<p class="margin_bottom_20">
 						<a href="http://tony.camaiani.me">tony.camaiani.me</a>
-             -
+             			-
 						<a href="http://twitter.com/tonycamaiani">@tonycamaiani</a>
 					</p>
 
-						<p class="fragment font_60">
-              Born
-              <img class="flag" width="58" height="38" src="images/flag_canada.png" alt="Canada">
-              grew up
-              <img class="flag" width="58" height="38" src="images/flag_italy.png" alt="Italy">
-              aging
-              <img class="flag" width="58" height="38" src="images/flag_spain.png" alt="Spain">
-            </p>
-						<p class="fragment">
-							Laurea in Computing Science, University of Bologna.
-							Thesis: “Usability Guidelines and User-Centered Design: a review“
+						<p class="fragment font_60 margin_bottom_20">
+			              Born
+			              <img class="flag" width="58" height="38" src="images/flag_canada.png" alt="Canada">
+			              grew up
+			              <img class="flag" width="58" height="38" src="images/flag_italy.png" alt="Italy">
+			              aging
+			              <img class="flag" width="58" height="38" src="images/flag_spain.png" alt="Spain">
+			            </p>
+						<p class="fragment font_80 margin_bottom_20">
+							Laurea in Computer Science, University of Bologna
+							<span class="block">“Usability Guidelines and User-Centered Design“</span>
 						</p>
-						<p class="fragment">Frontend Web Developer, adding fun with Web & UX Design.</p>
-						<p class="fragment">Actually working @ peerTransfer</p>
-						<p class="fragment">Organizer of Frontenders Valencia</p>
+						<p class="fragment margin_bottom_20">
+							Frontend Web Developer
+							<span class="font_80 block">Web Designer & UX</span>
+						</p>
+						<p class="fragment margin_bottom_20">
+							<img src="images/logo_peertransfer.png" alt="peerTransfer">
+						</p>
+						<p class="fragment">
+							<img src="images/logo_frontenders.png" alt="Frontenders">
+						</p>
+
+				</section>
+
+				<section>
+					<h2>Index</h2>
+
+					<ul>
+						<li>Old Version 0.1</li>
+						<li>Middleman</li>
+						<li>Navigation</li>
+						<li>Layout</li>
+						<li>Styles</li>
+						<li>Data Organization</li>
+						<li>Heroku</li>
+						<li>Next Steps</li>
 					</ul>
 
 				</section>
+
+				<section>
+					<section>
+						<h2>Old Version 0.1</h2>
+
+						<ul>
+							<li>Static Html / Css</li>
+							<li>2 index.html</li>
+							<li>Copy index.html to past.html</li>
+							<li>add talks slides</li>
+							<li>Css images for sponsors</li>
+							<li>Header and Footer duplicated</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/sshot_1_old_dir.png" alt="Frontenders">
+					</section>
+					<section>
+						<img src="images/sshot_1_old_index.png" alt="Frontenders">
+					</section>
+					<section>
+						<img src="images/sshot_1_old_past.png" alt="Frontenders">
+					</section>
+					<section>
+						<img src="images/sshot_1_old_css.png" alt="Frontenders">
+					</section>
+				</section>
+
+
+				<section>
+					<h2>Why change?</h2>
+
+					<ul>
+						<li>Update content more easily</li>
+						<li>Separate content from markup</li>
+						<li>No css edits</li>
+						<li>Status of Event</li>
+						<li>HAML & SASS</li>
+						<li>Common Header and Footer</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Static Site Generators</h2>
+					<p class="font_80 text_left margin_bottom_20">
+						A static-site generator simply takes your pre-compiled (and pre-processed) languages like Haml, Jade, Sass, LESS, Stylus, CoffeeScript, and others, and compiles them into the equivalent language that is understood by the browser; HTML, CSS, and JavaScript, respectively.
+						<cite><a href="http://drewbarontini.com/articles/middleman/">http://drewbarontini.com/articles/middleman/</a></cite>
+					</p>
+
+					<ul class="margin_bottom_20">
+						<li>Middleman</li>
+						<li>Jekyll</li>
+						<li>Assemble</li>
+						<li>...</li>
+						<li class="font_80">CodeKit</li>
+						<li class="font_80">Hammer</li>
+						<li class="font_80">Mixture</li>
+					</ul>
+					<p>
+						<a class="block" href="https://www.staticgen.com">https://www.staticgen.com</a>
+					</p>
+
+
+				</section>
+
+
+				<section>
+					<section>
+						<h2>Middleman</h2>
+
+						<p>
+							<a href="https://middlemanapp.com/">middlemanapp.com</a>
+						</p>
+						<img src="images/sshot_middleman.png" alt="Middleman">
+					</section>
+
+
+					<section>
+						<h2>Middleman</h2>
+						<p>
+							Creating a new project named <code>frontenders-valencia-middleman</code>.
+						</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							middleman init frontenders-valencia-middleman
+						</code></pre>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							middleman server
+						</code></pre>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							middleman build
+						</code></pre>
+					</section>
+
+				</section>
+
+
+
+
 
 				<!-- Example of nested vertical slides -->
 				<section>

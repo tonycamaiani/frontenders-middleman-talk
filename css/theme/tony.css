@@ -149,12 +149,25 @@ body {
  * Presentation Styles
  *********************************************/
 
-.reveal section img.flag {
+.reveal section img {
     border: 0;
+    box-shadow: none;
     vertical-align: middle;
   }
 
-.reveal section .font_80 { font-size: 80%;}
-.reveal section .font_60 { font-size: 60%;}
-.reveal section .font_40 { font-size: 40%;}
-.reveal section .font_20 { font-size: 20%;}
+
+.reveal section cite { font-style: italic; font-size: 80%; display: block;}
+
+.reveal section .font_80 { font-size: 80%; }
+.reveal section .font_60 { font-size: 60%; }
+.reveal section .font_40 { font-size: 40%; }
+.reveal section .font_20 { font-size: 20%; }
+
+.reveal section .text_left { text-align: left; }
+
+.reveal section .margin_bottom_20 { margin-bottom: 20px; }
+
+.reveal section .block { display: block; }
+
+
+
