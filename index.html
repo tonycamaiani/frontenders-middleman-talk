@@ -60,14 +60,21 @@
 						<a href="http://twitter.com/tonycamaiani">@tonycamaiani</a>
 					</p>
 
-						<p class="fragment font_60 margin_bottom_20">
-			              Born
-			              <img class="flag" width="58" height="38" src="images/flag_canada.png" alt="Canada">
-			              grew up
-			              <img class="flag" width="58" height="38" src="images/flag_italy.png" alt="Italy">
-			              aging
-			              <img class="flag" width="58" height="38" src="images/flag_spain.png" alt="Spain">
-			            </p>
+						<div class="fragment font_60 margin_bottom_20">
+							<p class="width_33">
+			              		born
+			              		<img class="flag" width="58" height="38" src="images/flag_canada.png" alt="Canada">
+			              	</p>
+			              	<p class="width_33">
+			              		grew up
+			              		<img class="flag" width="58" height="38" src="images/flag_italy.png" alt="Italy">
+			              	</p>
+			              	<p class="width_33">
+			              		aging
+			              		<img class="flag" width="58" height="38" src="images/flag_spain.png" alt="Spain">
+			              	</p>
+			            </div>
+
 						<p class="fragment font_80 margin_bottom_20">
 							Laurea in Computer Science, University of Bologna
 							<span class="block">“Usability Guidelines and User-Centered Design“</span>
@@ -89,13 +96,15 @@
 					<h2>Index</h2>
 
 					<ul>
-						<li>Old Version 0.1</li>
+						<li>Old Version</li>
 						<li>Middleman</li>
-						<li>Navigation</li>
-						<li>Layout</li>
-						<li>Styles</li>
-						<li>Data Organization</li>
-						<li>Heroku</li>
+						<ul>
+							<li>Layout</li>
+							<li>Styles</li>
+							<li>Data</li>
+							<li>Config</li>
+							<li>Heroku</li>
+						</ul>
 						<li>Next Steps</li>
 					</ul>
 
@@ -103,13 +112,13 @@
 
 				<section>
 					<section>
-						<h2>Old Version 0.1</h2>
+						<h2>Old Version</h2>
 
 						<ul>
 							<li>Static Html / Css</li>
 							<li>2 index.html</li>
 							<li>Copy index.html to past.html</li>
-							<li>add talks slides</li>
+							<li>Add talks slides</li>
 							<li>Css images for sponsors</li>
 							<li>Header and Footer duplicated</li>
 						</ul>
@@ -169,326 +178,813 @@
 				<section>
 					<section>
 						<h2>Middleman</h2>
-
-						<p>
-							<a href="https://middlemanapp.com/">middlemanapp.com</a>
-						</p>
+						<p><a href="https://middlemanapp.com/">middlemanapp.com</a></p>
 						<img src="images/sshot_middleman.png" alt="Middleman">
 					</section>
 
+					<section>
+						<h2>Middleman: Init</h2>
+
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							middleman init new_project
+						</code></pre>
+						<img src="images/sshot_dir_new_project.png" alt="Middleman">
+					</section>
 
 					<section>
-						<h2>Middleman</h2>
-						<p>
-							Creating a new project named <code>frontenders-valencia-middleman</code>.
-						</p>
-						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-							middleman init frontenders-valencia-middleman
-						</code></pre>
+						<h2>Middleman: Server</h2>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 							middleman server
 						</code></pre>
+						<img src="images/sshot_web_new_project.png" alt="Middleman">
+					</section>
+
+					<section>
+						<h2>Middleman: Build</h2>
 						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 							middleman build
 						</code></pre>
+						<img src="images/sshot_dir_build_new_project.png" alt="Middleman">
 					</section>
+				</section>
 
+				<section>
+					<h2>Frontenders Valencia Middleman</h2>
+					<img src="images/sshot_dir_source.png" alt="Middleman">
 				</section>
 
 
 
-
-
-				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<h2>Layout</h2>
+
+						<ul>
+							<li>HAML</li>
+							<li>Layouts</li>
+							<li>Partials</li>
+							<li>Pages</li>
+						</ul>
 					</section>
+
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
+						<h2>Layout.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+!!!
+%html
+  %head
+    ...
+    %link{:href => "http://fonts.googleapis.com/css?family=Rambla:400,700", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag "all"
+    = javascript_include_tag  "libs/modernizr"
+
+  %body
+    = partial 'partials/header'
+    = yield
+    = partial 'partials/footer'
+    ...
+
+						</code></pre>
+
 					</section>
+
 					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
+						<h2>Partials: _header.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+%header
+  %hgroup
+    %h1
+      = link_to data.static[:h1_logo_text], "/", :title => data.static[:h1_title]
+      %span= data.static[:h1_logo_subtext]
+
+    %h2
+      = data.static[:h2_scream_line_1]
+      %span= data.static[:h2_scream_line_2]
+      %span= data.static[:h2_scream_line_3]
+
+    %nav
+      %ul
+        %li
+          = link_to data.static[:nav_page_1], "/frontenders.html", :title => data.static[:nav_page_1_title], :class => is_page_selected("/frontenders/")
+        %li
+          = link_to data.static[:nav_page_2], "/past.html", :title => data.static[:nav_page_2_title], :class => is_page_selected("/past/")
+						</code></pre>
 					</section>
+
 					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
+						<h2>Partials: _footer.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+%footer
+  .fgroup
+    .first
+      %h3= data.static[:participate]
+      %p
+        =data.static[:participate_how]
+        =mail_to data.static[:participate_email], data.static[:participate_email]
+
+    .middle
+      %h3= data.static[:follow]
+      %p
+        = link_to "@frontendersVLC", "https://twitter.com/frontendersVLC", :title => "@frontendersVLC on Twitter", :target => "_blank"
+      %p
+        = link_to "#frontendersVLC", "https://twitter.com/search?q=%23frontendersVLC", :title => "Hashtag #frontendersVLC", :target => "_blank"
+
+    .last
+      %h3= data.static[:partner]
+      %p
+        = link_to data.static[:partner_name], data.static[:partner_url], :title => data.static[:partner_url_title], :class => "partner ir", :target => "_blank"
+						</code></pre>
 					</section>
-				</section>
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+					<section>
+						<h2>Index.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
+---
+title: a meetup for Frontend  UI Developers, UX  Web Designers
+ready: true
+---
+...
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+%main{:role => "main"}
+  %p.main_paragraph
+    = data.static[:main_paragraph_text_1]
+    = link_to data.static[:partner_name], data.static[:partner_url], :title => data.static[:partner_url_title], :target => "_blank"
+    = data.static[:main_paragraph_text_2]
+    = link_to data.static[:main_paragraph_link_text], "frontenders.html"
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+  %h2.title
+    = data.static[:next_meetup]
+    %time
+      = data.static[:week_day]
+      #{date}
+      = data.static[:day_hour]
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+  %section{:class => "#{type}"}
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+    - homepage.talks.each do |f|
+      %article
+        %h3= f[:title]
+        - f.text.each do |t|
+          %p= t
+        - if active
+          - f.author.each do |t|
+            %p
+              = t[:name]
+              = twitter_url(t[:twitter])
+              = t[:bio]
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+    - if homepage.sponsor
+      %div
+        %h3= data.static[:sponsor]
+        = link_to image_tag("sponsors/"+homepage.sponsor[:image]), homepage.sponsor[:url], :title => homepage.sponsor[:name], :target => "_blank"
 
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+    - if active
+      .call_to_action
+        = link_to data.static[:attend_text], homepage[:eventbrite], :class => "button", :target => "_blank"
+        %small.caption= data.static[:attend_subtext]
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						</code></pre>
 					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
 
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
 
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
+					<section>
+						<h2>frontenders.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+---
+title: ¿Que es? Frontenders
+---
+
+%main{:role => "main"}
+  %section
+    %h2.title= data.static[:frontenders_title]
+    %p
+      %b= data.static[:frontenders_def_text_1]
+      = data.static[:frontenders_def_text_2]
+      %cite
+        =link_to data.static[:frontenders_def_source_text], data.static[:frontenders_def_source_url], :target => "_blank"
+
+    %p= data.static[:frontenders_text_1]
+    %p= data.static[:frontenders_text_2]
+    %p= data.static[:frontenders_text_3]
+
+    %p
+      = data.static[:frontenders_text_4]
+      = succeed '.' do
+        =mail_to data.static[:participate_email], data.static[:participate_email]
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>past.haml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+---
+title: Los eventos anteriores
+---
+
+%main{:role => "main"}
+  %h2.title= data.static[:past_title]
+
+  - data.archive.meetups.each do |m|
+    %h2.section_title
+      = data.static[:week_day]
+      = m[:date]
+
+      - if m[:hangout_url]
+        = link_to m[:hangout_url], m[:hangout_url], :class=> "ico hangout", :target=> "_blank"
+
+    %section{:class => "#{m.type}"}
+      - m.talks.each do |f|
+        %article
+          %h3= f[:title]
+          - f.author.each do |t|
+            = t[:name]
+            = twitter_url(t[:twitter])
+
+          - f.text.each do |t|
+            %p= t
+
+          - if f.links
+            - f.links.each do |t|
+              %p.links
+                = link_to t[:label], t[:url], :target=> "_blank"
+
+      - if m.sponsor
+        %div
+          %h3= data.static[:sponsor]
+          = link_to image_tag("sponsors/"+m.sponsor[:image]), m.sponsor[:url], :title => m.sponsor[:name], :target=> "_blank"
+						</code></pre>
+					</section>
+				</section> <!-- Layout -->
 
 				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
+					<section>
+						<h2>Styles</h2>
+						<ul>
+							<li>SASS</li>
+							<li>Partials</li>
+							<li>Flexbox</li>
+							<li>Mobile First</li>
+							<li>Own breakpoints</li>
+						</ul>
+					</section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+					<section>
+						<h2>Styles</h2>
+						<img src="images/sshot_dir_stylesheets.png" alt="Middleman">
+					</section>
 
-    var nodes = document.querySelectorAll( selector );
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
+					<section>
+						<h2>Styles: _variables.scss</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+// _varables.scss
 
-      if( !node.className ) {
-        node.className += ' roll';
+//// Basic Colors
+
+    $white: #fff;
+
+    $gray: #53585e; /* text */
+    $gray_light: #f5f5f5; /* background */
+    $gray_lighter: rgba(161, 161, 161, 0.5);
+
+    $orange: rgb(230, 126, 34);
+    $orange_light: rgb(243, 156, 18);
+    $orange_dark: rgba(211, 84, 0, 0.5);
+    $orange_darker: rgb(220, 105, 17);
+
+    $blue: #1ea0ce;
+    $blue_light: #339ACC;
+
+  //// Background Colors
+
+    $background_color_body: $gray_light;
+    $background_color_header: $orange;
+    $background_color_button: $orange_light;
+    $background_color_button_hover: $orange_dark;
+
+    $shadow_color_header: $gray_lighter;
+    $shadow_color_article: $gray_lighter;
+
+    $border_color_article: $white;
+
+
+  //// Text Colors
+
+    $text_body_color: $gray;
+    $text_header_color: $white;
+    $text_heading_color: $orange;
+    $text_link_color: $blue;
+    $text_link_hover_color: $blue_light;
+    $text_selection_color: $white;
+    $text_selection_background: $blue;
+
+    $text_button_color: $white;
+    $text_button_background: $orange;
+    $text_button_hover_background: $orange_darker;
+
+/// General Variables
+
+$font_family: 'Rambla', sans-serif;
+
+
+
+
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Flexbox: footer</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+footer {
+    .fgroup {
+      display: flex;
+      justify-content: center;
+
+      div {
+        margin: 0;
+        flex-grow: 1;
+        flex-basis: 0;
+
+        &.first { text-align: left;}
+        &.last { text-align: right;}
+
+      } // div
+    } // .fgroup
+  } // footer
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Flexbox: article</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+  main {
+    section {
+      article {
+        margin: 0 2% 30px;
+        p { font-size: 18px; }
+      } // article
+
+      &.double {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+
+      article {
+        flex-grow: 1;
+        flex-basis: 0;
       }
-    }
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
+
+      div { flex: 1 100%; }
+      } // section.double
+    } // section
+  } // main
+
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Breakpoints</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+@media only screen and (min-width: 768px) { ... }
+@media only screen and (min-width: 896px) { ... }
+@media only screen and (min-width: 1024px) { ... }
+
+						</code></pre>
+					</section>
+
+				</section> <!-- Styles -->
+
 
 				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+					<section>
+						<h2>Data</h2>
+						<img src="images/sshot_dir_data.png" alt="Middleman">
+					</section>
+
+					<section>
+						<h2>Data: default.yml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+meetup:
+  date: "8 enero 2015"
+  type: "double"
+  talks:
+  - title: Espacio libre
+    text:
+      - ¿Tienes algo interesante que contar sobre temas de desarrollo frontend, diseño web, UI y UX y te gustaría compartirlo con nosotros?</p>
+      - Envíanos un correo a <a href="mailto:frontendersvalencia@gmail.com">frontendersvalencia@gmail.com</a> o contáctanos por <a target="_blank" href="https://twitter.com/frontendersVLC">twitter</a>
+  - title: Espacio libre
+    text:
+      - ¿Tienes algo interesante que contar sobre temas de desarrollo frontend, diseño web, UI y UX y te gustaría compartirlo con nosotros?</p>
+      - Envíanos un correo a <a href="mailto:frontendersvalencia@gmail.com">frontendersvalencia@gmail.com</a> o contáctanos por <a target="_blank" href="https://twitter.com/frontendersVLC">twitter</a>
+
+						</code></pre>
+					</section>
+
+
+					<section>
+						<h2>Data: new.yml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+meetup:
+  date: "8 enero 2015"
+  type: "double"
+  eventbrite: https://frontenders-enero-2015.eventbrite.es
+  talks:
+  - title: "Generando sitios web estáticos con Middleman"
+    text:
+      - "Frontenders tiene casi dos años, ¡y también su web!. Ha llegado el momento de pasar de una Web estática a algo más ágil para actualizar la información (en casa del herrero...)."
+      - "Para ello vamos a hacer uso de “Middleman”, un generador de sitios estáticos. Hablaremos del proceso de migración y las ventajas de usar este tipos de herramientas."
+    author:
+    - name: "Tony Camaiani"
+      twitter: "tonycamaiani"
+      bio: "es Frontender en @peerTransfer & coorganizador de @frontendersVLC."
+  - title: "Diseña y venderás"
+    text:
+      - "¿Por qué un usuario entra a mi web y no sabe a donde ir? ¿Cómo consigo dar confianza a mis usuarios en una compra online? ¿Como escribo un texto persuasivo?"
+      - "Un buen diseño puede ser la clave para conseguir tu objetivo en Internet, pero no la única. Hoy hablaremos de diseño, pero también de usabilidad, de marketing y de experiencias, para responder a estas preguntas."
+    author:
+    - name: "Juanma Martínez"
+      twitter: "juanmamartinez"
+      bio: "es Web Designer & UX en @Increnta, agencia especializada en Inbound Marketing y Marketing Digital."
+  sponsor:
+    name: "Kuombo - Consultoría y desarrollo de comercio electrónico"
+    url: "http://kuombo.com/"
+    image: "logo_kuombo.png"
+
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Data: archive.yml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+meetups:
+  - meetup:
+    date: "13 noviembre 2014"
+    hangout_url: "https://plus.google.com/u/0/events/c43la6lak11lgpo6g7q6bgumfpc"
+    type: double
+    talks:
+    - title: "¿Comprar online es una experiencia? UX para ecommerce"
+      text:
+        - "El comercio online es un mercado durísimo donde las empresas invierten multitud de recursos para crear experiencias seductoras que les diferencien de la competencia."
+        - "En esta charla aprenderemos los secretos para crear experiencias enfocadas en el usuario de ecommerce, y sacarles provecho para convertirlas en propuestas de valor que ayuden a alcanzar el objetivo de cualquier negocio online: vender más."
+      links:
+      - url: "/slides/Dani_Frontenders_UX_ecommerce.pdf"
+        label: "slides &raquo;"
+      author:
+      - name: "Dani Catalan"
+        twitter: "dani_catalan"
+        bio: "es Desarrollador Frontend en @kuombo, agencia especializada en el desarrollo del negocio de tiendas online."
+    - title: "Maquetación con Flexbox"
+      text:
+        - 'CSS empezó con mal pie cuando nos dio el "float" como medio de distribución de elementos y luego lo intentó arreglar con "display: table".'
+        - 'Pero ahora tenemos el módulo de Flexbox, con el que podemos maquetar con propiedades simples e intuitivas (o no) alterando los espacios entre objetos y el tamaño de los objetos en si. Vamos a dar un paseo por sus posibilidades y sintaxis.'
+      links:
+      - url: "/slides/Wakkos_Frontenders_Flexbox.pdf"
+        label: "slides &raquo;"
+      author:
+      - name: "Daniel Martínez"
+        twitter: "Wakkos"
+        bio: "es Frontend y tutor/profesor de Arquitectura CSS y responsive design en @EscuelaIt y @vadeclases."
+
+  - meetup:
+    date: "11 septiembre 2014"
+    hangout_url: "https://plus.google.com/events/cp3jjqh3uo7a33e684u5938olik"
+    type: single
+    talks:
+    - title: "Angularjs y su magia"
+      text:
+        - "Esta charla va a contener dos partes enlazadas en las que explicaremos qué es Angularjs y cuáles son sus bases y principios sobre los que se apoya. La idea está especialmente recomendada a gente poca experiencia o que quiera comenzar en breve. Aquí aprenderemos tips & tricks sobre cómo funciona y cómo utilizarla mejor."
+        - "En la segunda parte subiremos un poco el nivel y la orientaremos más a gente con experiencia en angular, aunque los más neófitos podrán ver qué pueden conseguir. En ella entraremos a ver la potencia que proporciona Angularjs y mostraremos un ejemplo de una aplicación web empresarial con muy pocas líneas de javascript, ¿o conseguiremos no escribir ninguna? Todo un reto :-)"
+      links:
+      - url: "http://www.slideshare.net/pedrohurtadocandel/angularjs-36566730"
+        label: "slides &raquo;"
+      author:
+      - name: "Pedro Hurtado Candel"
+        twitter: "_PedroHurtado"
+        bio: "es un truhan y un señor. Trabaja en .Net y últimamente en JavaScript y Angularjs. Administrador del foro de c# de msdn."
+      - name: "Xavier Jorge Cerdá"
+        twitter: "XaviPaper"
+        bio: "es Ingeniero Informático por la UPV y  CTO de Ami2. Vinculado a proyectos de I+D+i con universidades, trabaja .Net y últimamente en Angularjs."
+    sponsor:
+      name: "http://allstartup.es/"
+      url: "ALL STARTUP | El evento de selección de emprendedores de momentum"
+      image: "logo_momentum.png"
+
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Data: static.yml</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+# Header
+h1_title: "Frontenders Valencia"
+h1_logo_text: "&lt;frontenders/&gt;"
+h1_logo_subtext: "Valencia"
+h2_scream_line_1: "a meetup for"
+h2_scream_line_2: "Frontend & UI Developers,"
+h2_scream_line_3: "UX & Web Designers"
+nav_page_1: "¿Que es?"
+nav_page_1_title: "¿Que es Frontenders?"
+nav_page_2: "Anteriores"
+nav_page_2_title: "Los eventos anteriores"
+
+# Footer
+participate: "Participa"
+participate_how: "¿Quieres participar en una de las próximas reuniones? Escribe a"
+participate_email: "frontendersvalencia@gmail.com"
+follow: "Síguenos"
+partner: "Partner"
+partner_name: "GeeksHubs"
+partner_url: "http://geekshubs.com/es/?utm_source=comunidades&utm_medium=web&utm_campaign=frontenders"
+partner_url_title: "Comunidad Geek y Emprendedores techies"
+
+# Index
+main_paragraph_text_1: "Frontenders es una reunión mensual centrada en temas de desarrollo frontend, diseño web, UI y UX. Nos encontramos regularmente el segundo jueves de cada mes en el espacio de coworking"
+main_paragraph_text_2: ", en Avenida Cataluña, 11 (Valencia)."
+main_paragraph_link_text: "¿Quieres saber más?"
+next_meetup: "Próximo meetup:"
+week_day: "jueves"
+day_hour: ", 19:00h"
+sponsor: "Patrocinador"
+attend_text: "Asistiré al Frontenders Valencia"
+attend_subtext: "Por cuestiones de aforo nos gustaría saber el numero de asistentes."
+
+# What is
+frontenders_title: "¿Qué es Frontenders Valencia?"
+frontenders_def_text_1: "“The front end is an interface"
+frontenders_def_text_2: "between the user and the back end.”"
+frontenders_def_source_text: "Wikipedia"
+frontenders_def_source_url: "http://en.wikipedia.org/wiki/Front_and_back_ends"
+frontenders_text_1: "Esta definición resume en muy pocas palabras lo que entendemos por <em>frontender</em> la persona que se ocupa de la interfaz, en nuestro caso, de aplicaciones web."
+frontenders_text_2: "En Frontenders Valencia trataremos temas en los que arte, diseño, interacción, programación y análisis del comportamiento y de las prestaciones confluyen."
+frontenders_text_3: "Dos charlas de aproximadamente media hora, donde alguien presenta un tema, por conocimiento o por experiencia, y los demás intervienen con sus consejos o preguntas, ya que las reuniones pretenden ser diálogos donde todos puedan aportar y aprender."
+frontenders_text_4: "Por eso, pedimos a todos los interesados que propongan nuevas charlas y participen activamente en los próximos meetups. Si eres desarollador frontend, experto en UI y UX, o diseñador web y quieres colaborar con nosotros escríbenos a"
+
+# Past
+past_title: "Meetups anteriores"
+
+						</code></pre>
+					</section>
+
+				</section> <!-- Data -->
 
 				<section>
-					<section id="fragments">
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
+					<section>
+						<h2>Using the data</h2>
+						<p>index.haml</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+---
+title: a meetup for Frontend  UI Developers, UX  Web Designers
+ready: true
+---
 
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
+- active = current_page.data.ready
+
+- if active
+  - homepage = data.new.meetup
+- else
+  - homepage = data.default.meetup
+
+- date = homepage.date
+- type = homepage.type
+						</code></pre>
+
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+- homepage.talks.each do |f|
+  %article
+    %h3= f[:title]
+    - f.text.each do |t|
+      %p= t
+    - if active
+      - f.author.each do |t|
+        %p
+          = t[:name]
+          = twitter_url(t[:twitter])
+          = t[:bio]
+
+						</code></pre>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-current-blue">highlight-current-blue</p>
+						<h2>Using the data</h2>
+						<p>frontenders.haml</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+%main{:role => "main"}
+  %section
+    %h2.title= data.static[:frontenders_title]
+    %p
+      %b= data.static[:frontenders_def_text_1]
+      = data.static[:frontenders_def_text_2]
+      %cite
+        =link_to data.static[:frontenders_def_source_text], data.static[:frontenders_def_source_url], :target => "_blank"
+
+    %p= data.static[:frontenders_text_1]
+    %p= data.static[:frontenders_text_2]
+    %p= data.static[:frontenders_text_3]
+
+    %p
+      = data.static[:frontenders_text_4]
+      = succeed '.' do
+        =mail_to data.static[:participate_email], data.static[:participate_email]
+						</code></pre>
+
 					</section>
-				</section>
+				</section> <!-- Using the data -->
+
 
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
+					<section>
+						<h2>Config: config.rb</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+activate :livereload
+
+set :css_dir, 'stylesheets'
+set :js_dir, 'javascripts'
+set :images_dir, 'images'
+set :haml, { :ugly => true, :format => :html5 }
+
+activate :directory_indexes
+
+# Build-specific configuration
+configure :build do
+
+  activate :minify_css
+  activate :minify_javascript
+  activate :asset_hash
+end
+
+						</code></pre>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+helpers do
+  def is_page_selected(page)
+    current_page.url == page ? "selected" : ''
+  end
+
+  def twitter_url(username)
+    "<a target='_blank' href='https://twitter.com/#{username}'>@#{username}</a>"
+  end
+end
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Config: config.ru</h2>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+require "rubygems"
+
+require "rack"
+require "middleman/rack"
+require "rack/contrib/try_static"
+
+map "/" do
+  run lambda { |env|
+    [
+      200,
+      {
+        'Content-Type'  => 'text/html',
+        'Cache-Control' => 'public, max-age=86400'
+      },
+      File.open('build/index.html', File::RDONLY)
+    ]
+  }
+end
+
+map "/frontenders.html" do
+  run lambda { |env|
+    [
+      200,
+      {
+        'Content-Type'  => 'text/html',
+        'Cache-Control' => 'public, max-age=86400'
+      },
+      File.open('build/frontenders.html', File::RDONLY)
+    ]
+  }
+end
+
+map "/past.html" do
+  run lambda { |env|
+    [
+      200,
+      {
+        'Content-Type'  => 'text/html',
+        'Cache-Control' => 'public, max-age=86400'
+      },
+      File.open('build/past.html', File::RDONLY)
+    ]
+  }
+end
+
+run lambda { |env|
+  [
+    404,
+    {
+      "Content-Type" => "text/html",
+      "Cache-Control" => "public, max-age=60"
+    },
+    File.open("build/404.html", File::RDONLY)
+  ]
+}
+
+						</code></pre>
+					</section>
+				</section> <!-- Config -->
 
 				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
+					<section>
+						<h2>Deploy a Heroku</h2>
+						<p class="font_80"><a href="http://www.randomerrata.com/articles/2013/middleman-on-heroku/">http://www.randomerrata.com/articles/2013/middleman-on-heroku/</a></p>
+
+						<p>Gemfile</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+source 'http://rubygems.org'
+
+ruby "2.0.0"
+
+gem "middleman", "~>3.0.13"
+gem "rack-contrib"
+gem "puma"
+
+						</code></pre>
+						<p>Config.ru</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+# Build the static site when the app boots
+`bundle exec middleman build`
+
+# Enable proper HEAD responses
+use Rack::Head
+# Attempt to serve static HTML files
+use Rack::TryStatic,
+    :root => "build",
+    :urls => %w[/],
+    :try => ['.html', 'index.html', '/index.html']
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Deploy a Heroku</h2>
+						<p class="font_80"><a href="http://www.randomerrata.com/articles/2013/middleman-on-heroku/">http://www.randomerrata.com/articles/2013/middleman-on-heroku/</a></p>
+
+						<p>Procfile</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+web: bundle exec puma -p $PORT -e $RACK_ENV
+						</code></pre>
+
+
+						<p>...set up Heroku and</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px; max-height: 600px;">
+git push heroku master
+						</code></pre>
+
+					</section>
+				</section> <!-- Heroku  -->
+
 
 				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
+					<h2>Next Steps</h2>
 					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+						<li>SVG</li>
+						<li>Social Icon Font</li>
+						<li>More generic</li>
+						<li>...suggestions?</li>
 					</ul>
 				</section>
 
+
 				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
+					<h1 class="margin_bottom_40">That's all, Folks!</h1>
+					<p class="margin_bottom_40">
+						<h3>Repo</h3>
+						<a href="https://github.com/frontenders/valencia-middleman">https://github.com/frontenders/valencia-middleman</a>
+					</p>
+					<p class="margin_bottom_40">
+						<h3>These slides</h3>
+						<a href="http://tony.camaiani.me/frontenders-middleman-talk">http://tony.camaiani.me/frontenders-middleman-talk</a>
+						<small>made with <a href="http://lab.hakim.se/reveal-js/#/">reveal.js</a></small>
+					</p>
+
+					<h2>Any question?</h2>
 				</section>
+
+				<section>
+					<h1 class="margin_bottom_40">Thanks!</h1>
+					<img src="images/mecartoon.jpg" alt="Tony Camaiani">
+					<h2>Tony Camaiani</h2>
+
+					<p>
+						<a href="http://tony.camaiani.me">tony.camaiani.me</a>
+             			-
+						<a href="http://twitter.com/tonycamaiani">@tonycamaiani</a>
+					</p>
+				</section>
+
 
 			</div>
 
